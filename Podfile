@@ -9,11 +9,11 @@ end
 
 def test_pods
     project_pods
-    pod 'Quick', '0.9.3'
-    pod 'Nimble', '4.1.0'
+    pod 'Quick', '1.0.0'
+    pod 'Nimble', '5.1.0'
     # Helpers
     pod 'Aspects'
-    pod 'SwiftyJSON', '2.4.0'
+    pod 'SwiftyJSON', '3.1.3'
 end
 
 target 'Ably' do
