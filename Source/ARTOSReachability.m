@@ -15,6 +15,7 @@
 #import <netinet/in.h>
 
 #import "ARTOSReachability.h"
+#import "ARTAsyncStackTrace.h"
 
 @implementation ARTOSReachability {
     ARTLog *_logger;

@@ -11,6 +11,7 @@
 #import "ARTLog.h"
 #import "ARTRestChannels.h"
 #import "ARTLocalDevice.h"
+#import "ARTAsyncStackTrace.h"
 
 @protocol ARTHTTPExecutor;
 
@@ -57,5 +58,7 @@ ART_ASSUME_NONNULL_BEGIN
 #endif
 
 @end
+
+NSString *ART_getAsyncStackTrace();
 
 ART_ASSUME_NONNULL_END

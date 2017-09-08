@@ -59,6 +59,7 @@ FOUNDATION_EXPORT const unsigned char ablyVersionString[];
 #import "ARTOSReachability.h"
 #import "ARTGCD.h"
 #import "ARTPush.h"
+#import "ARTAsyncStackTrace.h"
 #ifdef TARGET_OS_IPHONE
 #import "ARTPushChannel.h"
 #endif

@@ -7,6 +7,7 @@
 //
 
 #import "ARTURLSessionServerTrust.h"
+#import "ARTAsyncStackTrace+Private.h"
 
 @interface ARTURLSessionServerTrust() {
     NSURLSession *_session;

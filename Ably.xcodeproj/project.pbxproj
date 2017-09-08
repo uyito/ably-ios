@@ -167,6 +167,10 @@
 		EB4B1A0C1F2190BB00467F07 /* ARTRestChannels+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EB4B1A0B1F2190BB00467F07 /* ARTRestChannels+Private.h */; };
 		EB503C881C7E4A090053AF00 /* ARTClientOptions+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EB503C871C7E4A090053AF00 /* ARTClientOptions+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EB503C8A1C7F1FE40053AF00 /* ARTLog+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EB503C891C7F1FE40053AF00 /* ARTLog+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		EB5AB25D1F63320A0021E132 /* ARTAsyncStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = EB5AB25C1F63320A0021E132 /* ARTAsyncStackTrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB5AB25F1F6332540021E132 /* ARTAsyncStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5AB25E1F6332540021E132 /* ARTAsyncStackTrace.m */; };
+		EB5AB2601F6332540021E132 /* ARTAsyncStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5AB25E1F6332540021E132 /* ARTAsyncStackTrace.m */; };
+		EB5AB2621F63328A0021E132 /* ARTAsyncStackTrace+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EB5AB2611F6332730021E132 /* ARTAsyncStackTrace+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EB5E058D1C77027600A48B39 /* ARTCrypto+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EB5E058C1C77027600A48B39 /* ARTCrypto+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EB7617721CB6CBFF00D0981E /* ARTRealtimePresence+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EB7617711CB6CBFE00D0981E /* ARTRealtimePresence+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EB7913A81C6E54C3000ABF9B /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7913A71C6E54C3000ABF9B /* Crypto.swift */; };
@@ -408,6 +412,9 @@
 		EB4B1A0B1F2190BB00467F07 /* ARTRestChannels+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARTRestChannels+Private.h"; sourceTree = "<group>"; };
 		EB503C871C7E4A090053AF00 /* ARTClientOptions+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARTClientOptions+Private.h"; sourceTree = "<group>"; };
 		EB503C891C7F1FE40053AF00 /* ARTLog+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARTLog+Private.h"; sourceTree = "<group>"; };
+		EB5AB25C1F63320A0021E132 /* ARTAsyncStackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTAsyncStackTrace.h; sourceTree = "<group>"; };
+		EB5AB25E1F6332540021E132 /* ARTAsyncStackTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTAsyncStackTrace.m; sourceTree = "<group>"; };
+		EB5AB2611F6332730021E132 /* ARTAsyncStackTrace+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARTAsyncStackTrace+Private.h"; sourceTree = "<group>"; };
 		EB5E058C1C77027600A48B39 /* ARTCrypto+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARTCrypto+Private.h"; sourceTree = "<group>"; };
 		EB7617701CB6C18C00D0981E /* ARTRestPresence+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARTRestPresence+Private.h"; sourceTree = "<group>"; };
 		EB7617711CB6CBFE00D0981E /* ARTRealtimePresence+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARTRealtimePresence+Private.h"; sourceTree = "<group>"; };
@@ -777,6 +784,9 @@
 				D75A3F1A1DDE5B62002A4AAD /* ARTGCD.m */,
 				EBD947B31EBB8F160005DD16 /* ARTSentry.h */,
 				EBD947B51EBB8F2B0005DD16 /* ARTSentry.m */,
+				EB5AB25C1F63320A0021E132 /* ARTAsyncStackTrace.h */,
+				EB5AB2611F6332730021E132 /* ARTAsyncStackTrace+Private.h */,
+				EB5AB25E1F6332540021E132 /* ARTAsyncStackTrace.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -888,6 +898,8 @@
 				D7D8F82D1BC2C706009718F2 /* ARTTokenParams.h in Headers */,
 				EB0505FC1C5BD7C4006BA7E2 /* ARTBaseMessage+Private.h in Headers */,
 				EB20F8D71C653F2300EF3978 /* ARTPresence+Private.h in Headers */,
+				EB5AB2621F63328A0021E132 /* ARTAsyncStackTrace+Private.h in Headers */,
+				EB5AB25D1F63320A0021E132 /* ARTAsyncStackTrace.h in Headers */,
 				D7F1D3771BF4DE72001A4B5E /* ARTRealtimePresence.h in Headers */,
 				1C578E1F1B3435CA00EF46EC /* ARTFallback.h in Headers */,
 				EB7617721CB6CBFF00D0981E /* ARTRealtimePresence+Private.h in Headers */,
@@ -1164,6 +1176,7 @@
 				EB1AE0CE1C5C3A4900D62250 /* Utilities.swift in Sources */,
 				D72304701BB72CED00F1ABDA /* RealtimeClient.swift in Sources */,
 				EB7913A81C6E54C3000ABF9B /* Crypto.swift in Sources */,
+				EB5AB2601F6332540021E132 /* ARTAsyncStackTrace.m in Sources */,
 				D746AE2D1BBB625E003ECEF8 /* RestClientChannels.swift in Sources */,
 				EBAB9A6F1C69702800AF036B /* ReadmeExamples.swift in Sources */,
 				D7C1B8771BBEA81A0087B55F /* Auth.swift in Sources */,
@@ -1232,6 +1245,7 @@
 				D768C6AD1E4B5B0200436011 /* ARTDevicePushDetails.m in Sources */,
 				1C6C18A41ADFDAB100AB79E4 /* ARTLog.m in Sources */,
 				D70EAAEE1BC3376200CD8B9E /* ARTRestChannel.m in Sources */,
+				EB5AB25F1F6332540021E132 /* ARTAsyncStackTrace.m in Sources */,
 				D746AE291BBB61C9003ECEF8 /* ARTPresence.m in Sources */,
 				EBD947B61EBB8F2B0005DD16 /* ARTSentry.m in Sources */,
 				96A507BE1A3791490077CDF8 /* ARTRealtime.m in Sources */,

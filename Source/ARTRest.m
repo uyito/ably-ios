@@ -395,12 +395,12 @@ ART_TRY_OR_REPORT_CRASH_START(self) {
         void (^userCallback)(NSDate *time, NSError *error) = callback;
         callback = ^(NSDate *time, NSError *error) {
             ART_EXITING_ABLY_CODE(self);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(time, error);
             });
         };
     }
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [self _time:callback];
 });
 }
@@ -458,7 +458,7 @@ ART_TRY_OR_REPORT_CRASH_START(self) {
         void (^userCallback)(__GENERIC(ARTPaginatedResult, ARTStats *) *, ARTErrorInfo *) = callback;
         callback = ^(__GENERIC(ARTPaginatedResult, ARTStats *) *r, ARTErrorInfo *e) {
             ART_EXITING_ABLY_CODE(self);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(r, e);
             });
         };
@@ -497,7 +497,7 @@ ART_TRY_OR_REPORT_CRASH_START(self) {
         return [encoder decodeStats:data error:errorPtr];
     };
     
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [ARTPaginatedResult executePaginated:self withRequest:request andResponseProcessor:responseProcessor callback:callback];
 });
     return YES;
