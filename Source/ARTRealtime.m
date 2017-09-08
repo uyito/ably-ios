@@ -345,6 +345,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(self) {
 - (void)transition:(ARTRealtimeConnectionState)state withErrorInfo:(ARTErrorInfo *)errorInfo {
 ART_TRY_OR_MOVE_TO_FAILED_START(self) {
     [self.logger debug:__FILE__ line:__LINE__ message:@"R:%p realtime state transitions to %tu - %@, errorInfo: %@", self, state, ARTRealtimeConnectionStateToStr(state), errorInfo];
+    NSLog(@"%@", ART_getAsyncStackTrace());
 
     ARTConnectionStateChange *stateChange = [[ARTConnectionStateChange alloc] initWithCurrent:state previous:self.connection.state_nosync event:(ARTRealtimeConnectionEvent)state reason:errorInfo retryIn:0];
     [self.connection setState:state];

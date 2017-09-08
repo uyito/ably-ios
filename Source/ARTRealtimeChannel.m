@@ -514,6 +514,8 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
 - (void)transition:(ARTRealtimeChannelState)state status:(ARTStatus *)status {
 ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
     [self.logger debug:__FILE__ line:__LINE__ message:@"channel state transitions to %tu - %@, errorInfo: %@", state, ARTRealtimeChannelStateToStr(state), status.errorInfo];
+    NSLog(@"%@", ART_getAsyncStackTrace());
+
     ARTChannelStateChange *stateChange = [[ARTChannelStateChange alloc] initWithCurrent:state previous:self.state_nosync event:(ARTChannelEvent)state reason:status.errorInfo];
     self.state = state;
 
