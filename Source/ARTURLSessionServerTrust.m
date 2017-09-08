@@ -30,9 +30,11 @@
     [_session finishTasksAndInvalidate];
 }
 
+void ART_dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
+
 - (void)get:(NSURLRequest *)request completion:(void (^)(NSHTTPURLResponse *__art_nullable, NSData *__art_nullable, NSError *__art_nullable))callback {
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        dispatch_async(_queue, ^{
+        ART_dispatch_async(_queue, ^{
             callback((NSHTTPURLResponse *)response, data, error);
         });
     }];

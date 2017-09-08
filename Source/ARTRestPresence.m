@@ -93,7 +93,7 @@ ART_TRY_OR_REPORT_CRASH_START(_channel.rest) {
         void (^userCallback)(ARTPaginatedResult<ARTPresenceMessage *> *, ARTErrorInfo *) = callback;
         callback = ^(ARTPaginatedResult<ARTPresenceMessage *> *m, ARTErrorInfo *e) {
             ART_EXITING_ABLY_CODE(_channel.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(m, e);
             });
         };
@@ -124,7 +124,7 @@ ART_TRY_OR_REPORT_CRASH_START(_channel.rest) {
         }];
     };
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [ARTPaginatedResult executePaginated:_channel.rest withRequest:request andResponseProcessor:responseProcessor callback:callback];
 });
     return YES;
@@ -143,7 +143,7 @@ ART_TRY_OR_REPORT_CRASH_START(_channel.rest) {
         void (^userCallback)(__GENERIC(ARTPaginatedResult, ARTPresenceMessage *) *result, ARTErrorInfo *error) = callback;
         callback = ^(__GENERIC(ARTPaginatedResult, ARTPresenceMessage *) *result, ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_channel.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(result, error);
             });
         };
@@ -190,7 +190,7 @@ ART_TRY_OR_REPORT_CRASH_START(_channel.rest) {
         }];
     };
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [ARTPaginatedResult executePaginated:_channel.rest withRequest:request andResponseProcessor:responseProcessor callback:callback];
 });
     return YES;

@@ -67,7 +67,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(realtime) {
         void (^userCallback)(ARTErrorInfo *__art_nullable error) = cb;
         cb = ^(ARTErrorInfo *__art_nullable error) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };

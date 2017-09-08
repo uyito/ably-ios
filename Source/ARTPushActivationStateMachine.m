@@ -54,7 +54,7 @@ NSString *const ARTPushActivationPendingEventsKey = @"ARTPushActivationPendingEv
 }
 
 - (void)sendEvent:(ARTPushActivationEvent *)event {
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [self handleEvent:event];
 });
 }
@@ -112,7 +112,7 @@ dispatch_async(_queue, ^{
     // Custom register
     SEL customRegisterMethodSelector = @selector(ablyPushCustomRegister:deviceDetails:callback:);
     if ([delegate respondsToSelector:customRegisterMethodSelector]) {
-        dispatch_async(_userQueue, ^{
+        ART_dispatch_async(_userQueue, ^{
             [delegate ablyPushCustomRegister:error deviceDetails:local callback:^(ARTUpdateToken *updateToken, ARTErrorInfo *error) {
                 if (error) {
                     // Failed
@@ -167,7 +167,7 @@ dispatch_async(_queue, ^{
     // Custom register
     SEL customRegisterMethodSelector = @selector(ablyPushCustomRegister:deviceDetails:callback:);
     if ([delegate respondsToSelector:customRegisterMethodSelector]) {
-        dispatch_async(_userQueue, ^{
+        ART_dispatch_async(_userQueue, ^{
             [delegate ablyPushCustomRegister:error deviceDetails:local callback:^(ARTUpdateToken *updateToken, ARTErrorInfo *error) {
                 if (error) {
                     // Failed
@@ -225,7 +225,7 @@ dispatch_async(_queue, ^{
     // Custom register
     SEL customDeregisterMethodSelector = @selector(ablyPushCustomDeregister:deviceId:callback:);
     if ([delegate respondsToSelector:customDeregisterMethodSelector]) {
-        dispatch_async(_userQueue, ^{
+        ART_dispatch_async(_userQueue, ^{
             [delegate ablyPushCustomDeregister:error deviceId:local.id callback:^(ARTErrorInfo *error) {
                 if (error) {
                     // Failed
@@ -265,7 +265,7 @@ dispatch_async(_queue, ^{
 
 - (void)callActivatedCallback:(ARTErrorInfo *)error {
     #ifdef TARGET_OS_IOS
-dispatch_async(_userQueue, ^{
+ART_dispatch_async(_userQueue, ^{
     if ([[UIApplication sharedApplication].delegate conformsToProtocol:@protocol(ARTPushRegistererDelegate)]) {
         id delegate = [UIApplication sharedApplication].delegate;
         SEL activateCallbackMethodSelector = @selector(didActivateAblyPush:);
@@ -279,7 +279,7 @@ dispatch_async(_userQueue, ^{
 
 - (void)callDeactivatedCallback:(ARTErrorInfo *)error {
     #ifdef TARGET_OS_IOS
-dispatch_async(_userQueue, ^{
+ART_dispatch_async(_userQueue, ^{
     if ([[UIApplication sharedApplication].delegate conformsToProtocol:@protocol(ARTPushRegistererDelegate)]) {
         id delegate = [UIApplication sharedApplication].delegate;
         SEL deactivateCallbackMethodSelector = @selector(didDeactivateAblyPush:);
@@ -293,7 +293,7 @@ dispatch_async(_userQueue, ^{
 
 - (void)callUpdateFailedCallback:(nullable ARTErrorInfo *)error {
     #ifdef TARGET_OS_IOS
-dispatch_async(_userQueue, ^{
+ART_dispatch_async(_userQueue, ^{
     if ([[UIApplication sharedApplication].delegate conformsToProtocol:@protocol(ARTPushRegistererDelegate)]) {
         id delegate = [UIApplication sharedApplication].delegate;
         SEL updateFailedCallbackMethodSelector = @selector(didAblyPushRegistrationFail:);

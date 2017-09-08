@@ -38,13 +38,13 @@
         void (^userCallback)(ARTErrorInfo *error) = callback;
         callback = ^(ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/push/channelSubscriptions"]];
     request.HTTPMethod = @"PUT";
@@ -72,13 +72,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTPaginatedResult *, ARTErrorInfo *error) = callback;
         callback = ^(ARTPaginatedResult *result, ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(result, error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:@"/push/channelSubscriptions"] resolvingAgainstBaseURL:NO];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[components URL]];
@@ -99,13 +99,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTPaginatedResult *, ARTErrorInfo *error) = callback;
         callback = ^(ARTPaginatedResult *result, ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(result, error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:@"/push/channelSubscriptions"] resolvingAgainstBaseURL:NO];
     components.queryItems = [params asURLQueryItems];
@@ -125,13 +125,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTErrorInfo *error) = callback;
         callback = ^(ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     if ((subscription.deviceId && subscription.clientId) || (!subscription.deviceId && !subscription.clientId)) {
         callback([ARTErrorInfo createWithCode:0 message:@"ARTChannelSubscription cannot be for both a deviceId and a clientId"]);
@@ -155,17 +155,17 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTErrorInfo *error) = callback;
         callback = ^(ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     [self _removeWhere:params callback:callback];
 } ART_TRY_OR_REPORT_CRASH_END
-});
+}); 
 }
 
 - (void)_removeWhere:(NSDictionary<NSString *, NSString *> *)params callback:(void (^)(ARTErrorInfo *error))callback {

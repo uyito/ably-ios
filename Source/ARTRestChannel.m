@@ -86,7 +86,7 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(__GENERIC(ARTPaginatedResult, ARTMessage *) *result, ARTErrorInfo *error) = callback;
         callback = ^(__GENERIC(ARTPaginatedResult, ARTMessage *) *result, ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(result, error);
             });
         };
@@ -153,13 +153,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTErrorInfo *__art_nullable error) = callback;
         callback = ^(ARTErrorInfo *__art_nullable error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSData *encodedMessage = nil;
     

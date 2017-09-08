@@ -290,13 +290,13 @@ ART_TRY_OR_MOVE_TO_FAILED_START(self) {
         void (^userCallback)(ARTErrorInfo *__art_nullable error) = cb;
         cb = ^(ARTErrorInfo *__art_nullable error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_MOVE_TO_FAILED_START(self) {
     switch (self.connection.state_nosync) {
     case ARTRealtimeInitialized:

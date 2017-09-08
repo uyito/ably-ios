@@ -38,13 +38,13 @@
         void (^userCallback)(ARTErrorInfo *error) = callback;
         callback = ^(ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     if (!deviceDetails.updateToken) {
         [_logger error:@"%@: update token is missing", NSStringFromClass(self.class)];
@@ -81,13 +81,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTPaginatedResult *, ARTErrorInfo *error) = callback;
         callback = ^(ARTPaginatedResult *result, ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(result, error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:@"/push/deviceRegistrations"] resolvingAgainstBaseURL:NO];
     components.queryItems = [params asURLQueryItems];
@@ -111,13 +111,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTErrorInfo *error) = callback;
         callback = ^(ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:@"/push/deviceRegistrations"] resolvingAgainstBaseURL:NO];
     components.queryItems = [params asURLQueryItems];

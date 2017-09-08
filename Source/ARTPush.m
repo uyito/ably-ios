@@ -50,13 +50,13 @@ NSString *const ARTDeviceTokenKey = @"ARTDeviceToken";
         void (^userCallback)(ARTErrorInfo *error) = callback;
         callback = ^(ARTErrorInfo *error) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/push/publish"]];
     request.HTTPMethod = @"POST";

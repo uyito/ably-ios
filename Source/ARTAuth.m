@@ -248,13 +248,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTTokenDetails *, NSError *) = callback;
         callback = ^(ARTTokenDetails *t, NSError *e) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(t, e);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
 ART_TRY_OR_REPORT_CRASH_START(_rest) {
     [self _requestToken:tokenParams withOptions:authOptions callback:callback];
 } ART_TRY_OR_REPORT_CRASH_END
@@ -302,14 +302,14 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         if (replacedOptions.authCallback) {
             void (^userCallback)(ARTTokenParams *, void(^)(id<ARTTokenDetailsCompatible>, NSError *)) = ^(ARTTokenParams *tokenParams, void(^callback)(id<ARTTokenDetailsCompatible>, NSError *)){
                 ART_EXITING_ABLY_CODE(_rest);
-                dispatch_async(_userQueue, ^{
+                ART_dispatch_async(_userQueue, ^{
                     replacedOptions.authCallback(tokenParams, callback);
                 });
             };
 
             tokenDetailsFactory = ^(ARTTokenParams *tokenParams, void(^callback)(ARTTokenDetails *__art_nullable, NSError *__art_nullable)) {
                 userCallback(tokenParams, ^(id<ARTTokenDetailsCompatible> tokenDetailsCompat, NSError *error) {
-                    dispatch_async(_queue, ^{
+                    ART_dispatch_async(_queue, ^{
                     ART_TRY_OR_REPORT_CRASH_START(_rest) {
                         if (error) {
                             callback(nil, error);
@@ -426,13 +426,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTTokenDetails *, NSError *) = callback;
         callback = ^(ARTTokenDetails *t, NSError *e) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(t, e);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [self _authorize:tokenParams options:authOptions callback:callback];
 });
 }
@@ -517,13 +517,13 @@ ART_TRY_OR_REPORT_CRASH_START(_rest) {
         void (^userCallback)(ARTTokenRequest *, NSError *) = callback;
         callback = ^(ARTTokenRequest *t, NSError *e) {
             ART_EXITING_ABLY_CODE(_rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(t, e);
             });
         };
     }
 
-dispatch_async(_queue, ^{
+ART_dispatch_async(_queue, ^{
     [self _createTokenRequest:tokenParams options:options callback:callback];
 });
 }

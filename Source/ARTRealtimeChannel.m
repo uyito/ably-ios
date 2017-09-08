@@ -145,7 +145,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
         void (^userCallback)(ARTErrorInfo *__art_nullable error) = callback;
         callback = ^(ARTErrorInfo *__art_nullable error) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
@@ -369,7 +369,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
         void (^userCallback)(ARTMessage *__art_nullable m) = cb;
         cb = ^(ARTMessage *__art_nullable m) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(m);
             });
         };
@@ -378,7 +378,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
         void (^userOnAttach)(ARTErrorInfo *__art_nullable m) = onAttach;
         onAttach = ^(ARTErrorInfo *__art_nullable m) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userOnAttach(m);
             });
         };
@@ -409,7 +409,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
         void (^userCallback)(ARTMessage *__art_nullable m) = cb;
         cb = ^(ARTMessage *__art_nullable m) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(m);
             });
         };
@@ -815,7 +815,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
         void (^userCallback)(ARTErrorInfo *__art_nullable error) = callback;
         callback = ^(ARTErrorInfo *__art_nullable error) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
@@ -930,7 +930,7 @@ ART_TRY_OR_MOVE_TO_FAILED_START(_realtime) {
         void (^userCallback)(ARTErrorInfo *__art_nullable error) = callback;
         callback = ^(ARTErrorInfo *__art_nullable error) {
             ART_EXITING_ABLY_CODE(_realtime.rest);
-            dispatch_async(_userQueue, ^{
+            ART_dispatch_async(_userQueue, ^{
                 userCallback(error);
             });
         };
