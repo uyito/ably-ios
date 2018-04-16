@@ -7,6 +7,7 @@ def test_pods
     # Helpers
     pod 'Aspects'
     pod 'SwiftyJSON', '3.1.4'
+    pod 'JSONWebToken', '2.2.0'
 end
 
 target 'AblySpec' do
