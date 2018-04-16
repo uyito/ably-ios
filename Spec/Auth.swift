@@ -10,6 +10,7 @@ import Ably
 import Nimble
 import Quick
 import Aspects
+import JWT
 
 class Auth : QuickSpec {
     override func spec() {
@@ -3616,6 +3617,32 @@ class Auth : QuickSpec {
 
                 it("rejects non-object JSON") {
                     expect{try ARTTokenDetails.fromJson("[]" as ARTJsonCompatible)}.to(throwError())
+                }
+            }
+        }
+        
+        describe("JWT") {
+            it("client accepts and works an encoded JWT as a token") {
+                let options = AblyTests.commonAppSetup()
+                guard let components = options.key?.components(separatedBy: ":"),
+                    let keyName = components.first, let keySecret = components.last else {
+                        fail("Invalid API key: \(options.key ?? "nil")")
+                        return
+                }
+                var claims = ClaimSet()
+                claims.issuedAt = Date()
+                claims.expiration = Date().addingTimeInterval(3600)
+                let result = JWT.encode(claims: claims, algorithm: .hs256(keySecret.data(using: .utf8)!), headers: ["kid": keyName])
+                options.token = result
+                let client = ARTRest(options: options)
+                let query = ARTStatsQuery()
+                query.unit = .minute
+                waitUntil(timeout: testTimeout) { done in
+                    client.stats{stats, error in
+                        expect(stats).toNot(beNil())
+                        expect(error).to(beNil())
+                        done()
+                    }
                 }
             }
         }
